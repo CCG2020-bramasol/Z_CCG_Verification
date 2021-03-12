@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:Reference
+		Uri="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference
+		Uri="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"
+		xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZGW_EQIPMENT_VERIFY_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="itemcount" sap:content-version="1">
+				<Key><PropertyRef Name="Kdauf"/></Key><Property Name="Kdauf" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Sales Order" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Itemcount" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="ITEMCOUNT" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZINSURACE_LIMIT" sap:content-version="1">
+				<Key><PropertyRef Name="VBELN"/></Key><Property Name="VBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="INSURANCE_LIMIT" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="HEADER" sap:content-version="1">
+				<Key><PropertyRef Name="VBELN"/></Key><Property Name="VBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="NAME_SO" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CITY_SO" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="POSTALCODE_SO" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="STREET_SO" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="COUNTRY_SO" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NAME_SH" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CITY_SH" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="POSTALCODE_SH" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="STREET_SH" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="COUNTRY_SH" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ZINSURACE_LIMIT" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="LINE_ITEM" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="HEADERITEMS" Relationship="ZGW_EQIPMENT_VERIFY_SRV.HEADERITEMS" FromRole="FromRole_HEADERITEMS"
+					ToRole="ToRole_HEADERITEMS"/></EntityType>
+			<EntityType Name="ITEM" sap:content-version="1">
+				<Key><PropertyRef Name="KDAUF"/></Key><Property Name="EQUNR" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="KDAUF" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="KDPOS" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="NG_SERIALNUMBER" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_YEAR" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_MINTMARK" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_ZDENOM" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_PROOFMINT" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_VARIETY" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_SECOND_VARIETY" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ZMM_NGC_THIRDVARIETY" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_STRIKECHAR" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_COINNUMBER" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_PEDIGREE" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_PEDIGREE1" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_VALUE" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_VP" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="NG_REL" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_ME" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="NG_ZOS" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_LBL" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_CCGLABEL" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_CORE" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_HOLDERTYPE" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_ORIGGRADE" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_OLD_STRIKE" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_COMMONHOLDER" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="CERT_ID" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_COINSRECEIVED" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_COINSVERIFIED" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_COINVALUERECEIVED" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="NG_COINVALUEVERIFIED" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="QTY" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="MEG_TYPE" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="MESSAGE" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZPROOFMINT" sap:content-version="1">
+				<Key><PropertyRef Name="CharVal"/></Key><Property Name="CharVal" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false"/><Property Name="CharDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZRECEVING_CORE" sap:content-version="1">
+				<Key><PropertyRef Name="ZngcReceivingCoresCode"/></Key><Property Name="ZngcReceivingCoresCmCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false"
+					sap:label="ZNGC_RECEIVING_CORES_CM_CODE" sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="ZngcReceivingCoresCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false"
+					sap:label="ZNGC_RECEIVING_CORES_CODE" sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="ZngcReceivingCoresDefault" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="ZNGC_RECEIVING_CORES_DEFAULT"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="ZngcReceivingCoresDesc" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false"
+					sap:label="ZNGC_RECEIVING_CORES_DESC" sap:creatable="false" sap:updatable="false" sap:sortable="false"/></EntityType>
+			<EntityType Name="ZRECEVING_LABEL" sap:content-version="1">
+				<Key><PropertyRef Name="ZngcReceivingLabelsCode"/></Key><Property Name="ZngcReceivingLabelsDefault" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Indicator"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZngcReceivingLabelsCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZngcReceivingLabelsDesc" Type="Edm.String" Nullable="false" MaxLength="75" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:filterable="false"/><Property Name="ZngcReceivingLabelsType" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZngcReceivingLabelsCmCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZngcReceivingLabelsRollup" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZngcReceivingLabelsPopFlag" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZngcReceivingLabelsSortSeq" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZngcReceivingLabelsPopOver" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZngcReceivingLabelsMaterial" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ZngcReceivingLabel" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZSTRIKECHAR" sap:content-version="1">
+				<Key><PropertyRef Name="CharVal"/></Key><Property Name="CharVal" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="CharDesc" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/></EntityType>
+			<EntityType Name="ZCOIN_LOOLUP" sap:content-version="1">
+				<Key><PropertyRef Name="Zzcoin"/><PropertyRef Name="zzcountry"/><PropertyRef Name="zzdenomination"/><PropertyRef Name="zzproofmint"/><PropertyRef Name="zzyear"/><PropertyRef Name="zzmintmark"/><PropertyRef Name="coinno"/></Key><Property Name="Zzcoin" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzhires" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Del.stat.waves"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="zzcountry" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Country Key"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="zzdenomination" Type="Edm.String" Nullable="false" MaxLength="27" sap:unicode="false" sap:label="Denomination"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="zzproofmint" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false"
+					sap:label="Component of the Version Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="zzyear" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Field" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="zzmintmark" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Field" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzvarietyfee" Type="Edm.String" Nullable="false" MaxLength="70" sap:unicode="false" sap:label="Char. Value"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzvariety" Type="Edm.String" Nullable="false" MaxLength="70" sap:unicode="false" sap:label="Char. Value"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzsecondvariety" Type="Edm.String" Nullable="false" MaxLength="70" sap:unicode="false" sap:label="Char. Value"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzthirdvariety" Type="Edm.String" Nullable="false" MaxLength="70" sap:unicode="false" sap:label="Char. Value"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzstrikecharacter" Type="Edm.String" Nullable="false" MaxLength="70" sap:unicode="false" sap:label="Char. Value"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzsort" Type="Edm.String" Nullable="false" MaxLength="14" sap:unicode="false" sap:label="Summary" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzsecondsort" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="Secondary Sort"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzkeyword" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Char" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="coinno" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Old matl number"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZMM_B_EQBSCOUNTType" sap:label="verification screen with the Quantity" sap:content-version="1">
+				<Key><PropertyRef Name="kdauf"/></Key><Property Name="kdauf" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order"
+					sap:quickinfo="Sales Order Number"/><Property Name="itemcount" Type="Edm.Int32"/></EntityType>
+			<EntityType Name="ZMMV_C_CDS_COIN_VIEWType" sap:label="Material by Coin Lookup" sap:content-version="1">
+				<Key><PropertyRef Name="zzcoin"/></Key><Property Name="zzcoin" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material"
+					sap:quickinfo="Material Number"/><Property Name="zzhires" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Deliv.status waves"
+					sap:quickinfo="Temporary delivery status during wave creation"/><Property Name="zzcountry" Type="Edm.String" MaxLength="3" sap:label="Country Key"/><Property Name="zzdenomination" Type="Edm.String" MaxLength="27" sap:label="Denomination"/><Property Name="zzproofmint" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label=""
+					sap:quickinfo="Component of the Version Number"/><Property Name="zzyear" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Field"
+					sap:quickinfo="User field for cluster PC (national)"/><Property Name="zzmintmark" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Field"
+					sap:quickinfo="User field for cluster PC (national)"/><Property Name="zzvarietyFee" Type="Edm.String" MaxLength="70" sap:label="Characteristic Value"/><Property Name="zzvariety" Type="Edm.String" MaxLength="70" sap:label="Characteristic Value"/><Property Name="zzsecondvariety" Type="Edm.String" MaxLength="70" sap:label="Characteristic Value"/><Property Name="zzthirdvariety" Type="Edm.String" MaxLength="70" sap:label="Characteristic Value"/><Property Name="zzstrikecharacter" Type="Edm.String" MaxLength="70" sap:label="Characteristic Value"/><Property Name="zzsort" Type="Edm.String" MaxLength="14" sap:display-format="NonNegative" sap:label="Summary"/><Property Name="zzsecondsort" Type="Edm.String" MaxLength="7" sap:display-format="NonNegative" sap:label="Secondary Sort"/><Property Name="zzkeyword" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Char"
+					sap:quickinfo="Character field of length 40"/><Property Name="coin_no" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old material number"/></EntityType>
+			<Association Name="HEADERITEMS" sap:content-version="1"><End Type="ZGW_EQIPMENT_VERIFY_SRV.HEADER" Multiplicity="1" Role="FromRole_HEADERITEMS"/><End Type="ZGW_EQIPMENT_VERIFY_SRV.ITEM" Multiplicity="*" Role="ToRole_HEADERITEMS"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_HEADERITEMS"><PropertyRef Name="VBELN"/></Principal>
+					<Dependent Role="ToRole_HEADERITEMS"><PropertyRef Name="KDAUF"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZGW_EQIPMENT_VERIFY_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true"
+				sap:supported-formats="atom json xlsx"><EntitySet Name="ZMM_B_EQBSCOUNT" EntityType="ZGW_EQIPMENT_VERIFY_SRV.ZMM_B_EQBSCOUNTType" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:content-version="1"/><EntitySet Name="itemcountSet" EntityType="ZGW_EQIPMENT_VERIFY_SRV.itemcount" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ZINSURACE_LIMITSet" EntityType="ZGW_EQIPMENT_VERIFY_SRV.ZINSURACE_LIMIT" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="HEADERSet" EntityType="ZGW_EQIPMENT_VERIFY_SRV.HEADER" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ITEMSet" EntityType="ZGW_EQIPMENT_VERIFY_SRV.ITEM" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:searchable="true" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ZPROOFMINTSet" EntityType="ZGW_EQIPMENT_VERIFY_SRV.ZPROOFMINT" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ZRECEVING_CORESet" EntityType="ZGW_EQIPMENT_VERIFY_SRV.ZRECEVING_CORE" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ZRECEVING_LABELSet" EntityType="ZGW_EQIPMENT_VERIFY_SRV.ZRECEVING_LABEL" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ZSTRIKECHARSet" EntityType="ZGW_EQIPMENT_VERIFY_SRV.ZSTRIKECHAR" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ZCOIN_LOOLUPSet" EntityType="ZGW_EQIPMENT_VERIFY_SRV.ZCOIN_LOOLUP" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ZMMV_C_CDS_COIN_VIEW" EntityType="ZGW_EQIPMENT_VERIFY_SRV.ZMMV_C_CDS_COIN_VIEWType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+				<AssociationSet Name="HEADERITEMSSet" Association="ZGW_EQIPMENT_VERIFY_SRV.HEADERITEMS" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="HEADERSet" Role="FromRole_HEADERITEMS"/><End EntitySet="ITEMSet" Role="ToRole_HEADERITEMS"/></AssociationSet>
+			</EntityContainer>
+			<Annotations Target="ZGW_EQIPMENT_VERIFY_SRV.ZGW_EQIPMENT_VERIFY_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZMMV_C_CDS_COIN_VIEW_CDS.ZMMV_C_CDS_COIN_VIEW_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations><atom:link rel="self"
+				href="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/sap/ZGW_EQIPMENT_VERIFY_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version"
+				href="https://webidecp-kwzzkmw13x.dispatcher.us4.hana.ondemand.com/destinations/CCG_S4_Dev_200/sap/opu/odata/sap/ZGW_EQIPMENT_VERIFY_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

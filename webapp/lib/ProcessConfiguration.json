@@ -1,0 +1,39 @@
+{
+	"init": {
+		"Lload": true,
+		"more": true,
+		"items": true,
+		"GTO": true,
+		"ship":true,
+		"TOEx": false,
+		"post": false
+	},
+	"gTo":{
+		"Lload": true,
+		"more": true,
+		"items": true,
+		"ship":true,
+		"GTO": false,
+		"TOEx": true,
+		"post": false
+	},
+	"toEx":{
+		"Lload": true,
+		"more": true,
+		"items": true,
+		"ship":true,
+		"GTO": false,
+		"TOEx": false,
+		"post": true
+	},
+	"post":{
+		"Lload": false,
+		"more": false,
+		"items": false,
+		"ship":false,
+		"GTO": false,
+		"TOEx": false,
+		"post": false
+	}
+		
+}

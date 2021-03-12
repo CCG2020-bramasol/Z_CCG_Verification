@@ -1,0 +1,86 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog id="coinLookupDialog" title="Coin Lookup" class="sapUiPopupWithPadding" contentWidth="60rem" horizontalScrolling="false">
+		<buttons>
+			<Button text="Close" press="onCloseDialog"/>
+		</buttons>
+		<l:VerticalLayout class="sapUiContentPadding" width="100%">
+			<l:content>
+				<Panel headerText="" class="sapUiDemoFlexBoxSizeAdjustments">
+					<FlexBox alignItems="Start">
+						<l:VerticalLayout class="sapUiContentPadding">
+							<Label text="Year:"/>
+							<Input class="sapUiSmallMarginBottom" id="txtYear" submit="onSearchDialog" placeholder="Year" type="Number"/>
+						</l:VerticalLayout>
+						<l:VerticalLayout class="sapUiContentPadding">
+							<Label text="Mint Mark:"/>
+							<Input class="sapUiSmallMarginBottom" id="txtMintMark" submit="onSearchDialog" placeholder="Mint Mark" type="Number"/>
+						</l:VerticalLayout>
+						<l:VerticalLayout class="sapUiContentPadding">
+							<Label text="Denomination:"/>
+							<Input class="sapUiSmallMarginBottom" id="txtDenomination" submit="onSearchDialog" placeholder="Denomination" type="Number"/>
+						</l:VerticalLayout>
+						<l:VerticalLayout class="sapUiContentPadding">
+							<Label text="Proof Mint:"/>
+							<!--<Input class="sapUiSmallMarginBottom" id="txtProofMint" change="onChange" placeholder="Proof Mint" type="Number"/>-->
+							<Input id="txtProofMint" value="{SOHeaderModel>NG_PROOFMINT}" submit="onSearchDialog" textFormatMode="ValueKey" showSuggestion="true"
+								showTableSuggestionValueHelp="false" suggestionRows="{SOHeaderModel>/aItems/0/HEADERITEMS/mintmark}">
+								<suggestionColumns>
+									<Column popinDisplay="Inline" demandPopin="true">
+										<Label text="Value"/>
+									</Column>
+									<Column popinDisplay="Inline" demandPopin="true">
+										<Label text="Desc"/>
+									</Column>
+								</suggestionColumns>
+								<suggestionRows>
+									<ColumnListItem>
+										<Label text="{SOHeaderModel>CharVal}"/>
+										<Label text="{SOHeaderModel>CharDesc}"/>
+									</ColumnListItem>
+								</suggestionRows>
+							</Input>
+						</l:VerticalLayout>
+						<l:VerticalLayout class="sapUiContentPadding" hAlign="Bottom">
+							<Button text="Go" type="Emphasized" press="onSearchDialog"/>
+						</l:VerticalLayout>
+					</FlexBox>
+				</Panel>
+				<!--<Table id="coinTable" items="CoinResultModel>/aItems" alternateRowColors="true>-->
+				<Table id="tblCoins" popinLayout="GridSmall" items="{CoinResultModel>/aItems}" fixedLayout="true" inset="true" alternateRowColors="true">
+					<columns>
+						<Column>
+							<Text text="{i18n>tableCoinNoColumTile}"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>tableCountryColumnTitle}"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>tableYearColumnTitle}"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>tableMintMarkColumTile}"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>tableDenominationColumTile}"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>tableProofColumTile}"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="_IDEGen_Wf_columnlistitem0">
+							<cells>
+								<Link text="{CoinResultModel>zzcoin}" press="onLinkPressDialog" />
+								<Text text="{CoinResultModel>zzcountry}"/>
+								<Text text="{CoinResultModel>zzyear}"/>
+								<Text text="{CoinResultModel>zzmintmark}"/>
+								<Text text="{CoinResultModel>zzdenomination}"/>
+								<Text text="{CoinResultModel>zzproofmint}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</l:content>
+		</l:VerticalLayout>
+	</Dialog>
+</core:FragmentDefinition>

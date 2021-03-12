@@ -1,0 +1,36 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="ccg.Bramasol.Verify.Process040220.SharedBlocks.goals.Verify_Header" xmlns:html="http://www.w3.org/1999/xhtml">
+	<!--	<HeaderContainer id="container2" scrollStep="200">-->
+	<!--	<TileContent unit="EUR" footer="Current Quarter">-->
+	<!--		<content>-->
+	<!--			<NumericContent value="1.96" valueColor="Error" indicator="Down" press="press"/>-->
+	<!--		</content>-->
+	<!--	</TileContent>-->
+	<!--	<TileContent footer="Leave Requests">-->
+	<!--		<content>-->
+	<!--			<NumericContent value="35" icon="sap-icon://travel-expense"/>-->
+	<!--		</content>-->
+	<!--	</TileContent>-->
+	<!--	<TileContent footer="Hours since last Activity">-->
+	<!--		<content>-->
+	<!--			<NumericContent value="9" icon="sap-icon://horizontal-bar-chart"/>-->
+	<!--		</content>-->
+	<!--	</TileContent>-->
+	<!--	<TileContent unit="EUR" footer="Current Quarter">-->
+	<!--		<content>-->
+	<!--			<NumericContent scale="M" value="88"-->
+	<!--							valueColor="Good" indicator="Up" />-->
+	<!--		</content>-->
+	<!--	</TileContent>-->
+	<!--</HeaderContainer>-->
+	<HeaderContainer showDividers="false">
+		<Label text="Coin Rec:" design="Bold"/>
+		<ObjectNumber class="sapMObjectNumberLarge" number="10" emphasized="false" state="Information"/>
+		<Label text="Coins Verified:" design="Bold"/>
+		<ObjectNumber class="sapMObjectNumberLarge" number="14" emphasized="false" state="Information"/>
+		<Label text="Value Rec:" design="Bold"/>
+		<ObjectNumber class="sapMObjectNumberLarge" number="1,84,500.00" emphasized="false" state="Information"/>
+		<Label text="Verified:" design="Bold"/>
+		<ObjectNumber class="sapMObjectNumberLarge" number="1,85,500.00" emphasized="false" state="Information"/>
+	</HeaderContainer>
+</mvc:View>

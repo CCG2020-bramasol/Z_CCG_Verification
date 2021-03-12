@@ -1,0 +1,71 @@
+<mvc:View controllerName="ccg.Verification.controller.VerifyProcess_Items" xmlns="sap.ui.table" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified" xmlns:c="sap.ui.core" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:uxap="sap.uxap"
+	xmlns:goals="ccg.Verification.SharedBlocks.goals" height="100%">
+	<m:Page title="Verification" id="verifyItemPage" showNavButton="true" navButtonPress=".onNavBack" class="sapUiResponsiveContentPadding">
+		<uxap:ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="false" upperCaseAnchorBar="false">
+			<uxap:headerTitle>
+				<uxap:ObjectPageDynamicHeaderTitle>
+					<uxap:expandedHeading>
+						<m:Title text="Submission #:" wrapping="true"/>
+					</uxap:expandedHeading>
+					<uxap:snappedHeading>
+						<m:FlexBox fitContainer="true" alignItems="Center">
+							<m:Avatar src="sap-icon://picture" backgroundColor="Random" class="sapUiTinyMarginEnd"/>
+							<m:Title text="Submission #:" wrapping="true"/>
+						</m:FlexBox>
+					</uxap:snappedHeading>
+					<uxap:actions>
+						<uxap:ObjectPageHeaderActionButton text="Pedigree" type="Emphasized" hideText="false"/>
+						<uxap:ObjectPageHeaderActionButton icon="sap-icon://action" type="Transparent" text="Share" tooltip="action"/>
+					</uxap:actions>
+				</uxap:ObjectPageDynamicHeaderTitle>
+			</uxap:headerTitle>
+			<uxap:headerContent>
+				<m:FlexBox wrap="Wrap">
+					<m:Avatar src="sap-icon://customer-briefing" backgroundColor="Random" displaySize="S" class="sapUiTinyMarginEnd"/>
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+						<m:Title text="Sold To:" wrapping="true"/>
+						<m:ObjectStatus text="00001725547 - Domestic Customer US 3"/>
+						<m:ObjectStatus text="100, Boundry Road, Houma, US - 70363-665"/>
+					</layout:VerticalLayout>
+					<m:Avatar src="sap-icon://shipping-status" backgroundColor="Random" displaySize="S" class="sapUiTinyMarginEnd"/>
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+						<m:Title text="Ship To:" wrapping="true"/>
+						<m:ObjectStatus text="00001725547 - Domestic Customer US 3"/>
+						<m:ObjectStatus text="100, Boundry Road, Houma, US - 70363-665"/>
+					</layout:VerticalLayout>
+				</m:FlexBox>
+			</uxap:headerContent>
+			
+			<uxap:sections>
+				<uxap:ObjectPageSection titleUppercase="false" title="Header">
+					<uxap:subSections>
+						<uxap:ObjectPageSubSection title="Header" titleUppercase="false">
+							<uxap:blocks>
+								<goals:Verify_Header/>
+							</uxap:blocks>
+						</uxap:ObjectPageSubSection>
+					</uxap:subSections>
+				</uxap:ObjectPageSection>
+				<uxap:ObjectPageSection titleUppercase="false" title="Coin Items(0)">
+					<uxap:subSections>
+						<uxap:ObjectPageSubSection title="Coin Items(0)" titleUppercase="false">
+							<m:Panel expanded="true" backgroundDesign="Solid" expandable="false">
+							
+							<layout:VerticalLayout class="gridWrapper" width="100%">
+								<layout:Grid defaultSpan="L6 M6 S6" defaultIndent="L1 M4 S6" containerQuery="true">
+									<m:Text class="sapMH3FontSize" text="Encapsulation Process Started" id="txtEncap">
+										<m:customData>
+											<c:CustomData value="Red" key="mydata"/>
+										</m:customData>
+									</m:Text>
+								</layout:Grid>
+							</layout:VerticalLayout>
+								</m:Panel>
+						</uxap:ObjectPageSubSection>
+					</uxap:subSections>
+				</uxap:ObjectPageSection>
+			</uxap:sections>
+		</uxap:ObjectPageLayout>
+	</m:Page>
+</mvc:View>

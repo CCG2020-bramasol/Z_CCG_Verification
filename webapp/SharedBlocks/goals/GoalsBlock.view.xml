@@ -1,0 +1,14 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:forms="sap.ui.layout.form"
+	controllerName="ccg.Bramasol.Verify.Process040220.SharedBlocks.goals.GoalsBlock" xmlns:html="http://www.w3.org/1999/xhtml">
+	<HeaderContainer showDividers="false">
+		<Label text="Coin Rec:" design="Bold"/>
+		<ObjectNumber number="10" emphasized="false" state="Success"/>
+		<Label text="Coins Verified:" design="Bold"/>
+		<ObjectNumber number="21" emphasized="false" state="Success"/>
+		<Label text="Value Rec:" design="Bold"/>
+		<ObjectNumber number="1,84,500.00" emphasized="false" state="Success"/>
+		<Label text="Verified:" design="Bold"/>
+		<ObjectNumber number="1,84,500.00" emphasized="false" state="Success"/>
+	</HeaderContainer>
+	
+</mvc:View>

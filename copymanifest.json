@@ -1,0 +1,157 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "ccg.Verification",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZMM_C_VBAK_ADRC_CDS": {
+				"uri": "/CCG_S4_Dev_200/sap/opu/odata/sap/ZMM_C_VBAK_ADRC_CDS/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "ccg.Verification.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "ccg.Verification.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZMM_C_VBAK_ADRC_CDS",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "ccg.Verification.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"bypassed": {
+					"target": "notFound"
+				}
+			},
+			"routes": [
+				{
+					"name": "TargetVerifyProcess_Overview",
+					"pattern": "",
+					"target": [
+						"TargetVerifyProcess_Overview"
+					]
+				},
+				{
+					"pattern": "Invoice/{objectId}/Sales/{salesid}",
+					"name": "verifyprocessitems",
+					"target": [
+						"verifyprocessitems"
+					]
+				}
+			],
+			"targets": {
+				"TargetVerifyProcess_Overview": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "TargetVerifyProcess_Overview",
+					"viewName": "VerifyProcess_Overview",
+					"viewLevel": 1
+				},
+				"notFound": {
+					"viewId": "notFound",
+					"viewName": "NotFound",
+					"transition": "show"
+				},
+				"verifyprocessitems": {
+					"viewName": "VerifyProcess_Items",
+					"viewId": "verifyprocessitems",
+					"viewLevel": 2,
+					"title": "{i18n>objectViewTitle}"
+				},
+				"VerifyProcess_Items": {
+					"viewType": "XML",
+					"viewName": "VerifyProcess_Items"
+				},
+				"GoalsBlock": {
+					"viewType": "XML",
+					"viewName": "GoalsBlock"
+				},
+				"Verify_Header": {
+					"viewType": "XML",
+					"viewName": "Verify_Header"
+				},
+				"verify_Coin_Table": {
+					"viewType": "XML",
+					"viewName": "verify_Coin_Table"
+				}
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/z_ccg_verify/webapp",
+		"_version": "1.1.0"
+	}
+}

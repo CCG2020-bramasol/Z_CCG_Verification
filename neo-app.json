@@ -1,0 +1,66 @@
+{
+  "welcomeFile": "/webapp/index.html",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/S4H_Bramasol",
+      "target": {
+        "type": "destination",
+        "name": "S4H_Bramasol"
+      },
+      "description": "S4H_Bramasol"
+    },
+    {
+      "path": "/CCG_S4_Dev",
+      "target": {
+        "type": "destination",
+        "name": "CCG_S4_Dev"
+      },
+      "description": "CCG_S4_Dev"
+    },
+    {
+      "path": "/CCG_S4_Dev_200",
+      "target": {
+        "type": "destination",
+        "name": "CCG_S4_Dev_200"
+      },
+      "description": "CCG_S4_Dev_200"
+    }
+  ],
+  "sendWelcomeFileRedirect": true
+}

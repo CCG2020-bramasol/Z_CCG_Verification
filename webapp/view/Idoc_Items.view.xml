@@ -1,0 +1,9 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="ccg.Verification.controller.Idoc_Items" xmlns:html="http://www.w3.org/1999/xhtml">
+			<Page title="Title" id="employeePage"
+				showNavButton="true"
+				navButtonPress=".onNavBack"
+				class="sapUiResponsiveContentPadding">
+				<content></content>
+			</Page>
+</mvc:View>

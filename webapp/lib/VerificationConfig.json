@@ -1,0 +1,57 @@
+{
+	"overview": {
+		"view": "VerifyProcess_Default",
+		"VerifyProcess_Items": "overview",
+		"parentScreen": "",
+		"keyFields": {},
+		"filters": {
+			"VBELN": ""
+		},
+		"urlParameters": {
+			"$expand": "HEADERITEMS"
+			
+		},
+		"coinFilter": {
+			"zzyear": "",
+			"zzmintmark": "",
+			"zzdenomination": "",
+			"zzproofmint": "",
+			"zzcoin": ""
+		},
+		"placeHolderLabel": "EnterTO",
+		"pageTitle": "putByTo",
+		"toastMsg": "cnfrmTst",
+		"uiControl": "toTable",
+		"entitySet": "/HEADERSet",
+		"modelName": "SOHeaderModel"
+	},
+
+	"verifyprocessitems_old": {
+		"view": "VerifyProcess_Items",
+		"VerifyProcess_Items": "verifyprocessitems",
+		"parentScreen": "overview",
+		"keyFields": {},
+		"filters": {
+			"vbeln": ""
+		},
+		"urlParameters": {
+			"$expand": "Nav_header_detail"
+		},
+		"coinFilter": {
+			"NG_YEAR": "",
+			"NG_MINTMARK": "",
+			"NG_DENOMIN": "",
+			"NG_PROOFMINT": "",
+			"NG_VARIETY": "",
+			"NG_COIN_NO": "",
+			"NG_VALUE_SUM": ""
+		},
+		"placeHolderLabel": "EnterTO",
+		"pageTitle": "putByTo",
+		"toastMsg": "cnfrmTst",
+		"uiControl": "toTable",
+		"entitySet": "/Invoice_HeaderSet",
+		"modelName": "invoiceHeaderModel"
+	}
+
+}

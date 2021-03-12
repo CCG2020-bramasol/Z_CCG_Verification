@@ -1,0 +1,277 @@
+<mvc:View id="view1" height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+	xmlns:semantic="sap.f.semantic" xmlns:core="sap.ui.core" controllerName="ccg.Verification.controller.VerifyProcess_Default">
+	<semantic:SemanticPage id="mySemanticPage" headerPinnable="false" toggleHeaderOnTitleClick="false" preserveHeaderStateOnScroll="false"
+		titleAreaShrinkRatio="1:1.6:1.6" showFooter="{/showFooter}">
+		<!-- Title Heading-->
+		<semantic:titleHeading>
+			<Avatar src="sap-icon://customer-briefing" backgroundColor="Random" displaySize="S" class="sapUiTinyMarginEnd"/>
+			<Title text="Verification"/>
+		</semantic:titleHeading>
+		<!-- TitleExpanded content-->
+		<semantic:titleSnappedContent>
+			<Text text="{SOHeaderModel>vbeln}"/>
+		</semantic:titleSnappedContent>
+		<!-- TitleSnapped content-->
+		<semantic:titleExpandedContent>
+			<!--<Text text="{/titleExpandedContent/text}"/>-->
+			<form:SimpleForm editable="true" layout="ColumnLayout" width="55%">
+				<Label text="Submission # "/>
+				<Input class="sapUiSmallMarginBottom" id="txtCustRefNumber" change="onChange" placeholder="Submission Number" type="Number"/>
+			</form:SimpleForm>
+		</semantic:titleExpandedContent>
+		<!-- Header Content -->
+		<semantic:headerContent>
+			<FlexBox wrap="Wrap">
+				<Avatar src="sap-icon://customer-briefing" backgroundColor="Random" displaySize="S" class="sapUiTinyMarginEnd"/>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<Title text="Sold To:" wrapping="true"/>
+					<ObjectStatus text="{SOHeaderModel>NAME_SO},{SOHeaderModel>STREET_SO}"/>
+					<ObjectStatus text="{SOHeaderModel>CITY_SO},{SOHeaderModel>COUNTRY_SO}-{SOHeaderModel>POSTALCODE_SO}"/>
+				</layout:VerticalLayout>
+				<Avatar src="sap-icon://shipping-status" backgroundColor="Random" displaySize="S" class="sapUiTinyMarginEnd"/>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<Title text="Ship To:" wrapping="true"/>
+					<ObjectStatus text="{SOHeaderModel>NAME_SH},{SOHeaderModel>STREET_SO}"/>
+					<ObjectStatus text="{SOHeaderModel>CITY_SH},{SOHeaderModel>COUNTRY_SH}-{SOHeaderModel>POSTALCODE_SH}"/>
+				</layout:VerticalLayout>
+			</FlexBox>
+			<Panel headerText="">
+				<layout:HorizontalLayout class="sapUiContentPadding">
+					<Label text="Coin Record :"/>
+					<ObjectNumber class="sapMObjectNumberLarge" number="{SOHeaderModel>LINE_ITEM}"/>
+				</layout:HorizontalLayout>
+				<layout:HorizontalLayout class="sapUiContentPadding">
+					<Label text="Coins Verified :"/>
+					<ObjectNumber id="coinVerified" class="sapMObjectNumberLarge" number="{SOHeaderModel>COIN_VERIFIED}"/>
+				</layout:HorizontalLayout>
+				<layout:HorizontalLayout class="sapUiContentPadding">
+					<Label text="Value Record :"/>
+					<ObjectNumber class="sapMObjectNumberLarge" number="{SOHeaderModel>ZINSURACE_LIMIT}"/>
+				</layout:HorizontalLayout>
+				<layout:HorizontalLayout class="sapUiContentPadding">
+					<Label text="Verified :"/>
+					<ObjectNumber class="sapMObjectNumberLarge" number="{SOHeaderModel>VERIFIED}"/>
+				</layout:HorizontalLayout>
+			</Panel>
+		</semantic:headerContent>
+		<!-- Content -->
+		<semantic:content>
+			<!--<Panel expanded="true" backgroundDesign="Solid" expandable="true" headerText="Verification Details">-->
+			<Table id="tblCoinItems" contextualWidth="520px" popinLayout="GridSmall" items="{SOHeaderModel>/aItems/0/HEADERITEMS/results}"
+				fixedLayout="true" inset="true" selectionMode="MultiToggle" alternateRowColors="true">
+				<headerToolbar>
+					<OverflowToolbar id="otbSubheader">
+						<Title id="t1" text="Coin Items" level="H2"/>
+						<ToolbarSpacer id="ts1"/>
+						<!--<Button id="saveButton" text="Save" type="Accept" press="onCreate"/>-->
+						<!--<Button id="submitButton" text="Submit" type="Accept" press="onCreate"/>-->
+						<Button type="Rejected" text="Save" press="onCreate" ariaDescribedBy="acceptButtonDescription genericButtonDescription">
+							<layoutData>
+								<FlexItemData growFactor="2"/>
+							</layoutData>
+						</Button>
+						<Button type="Accept" text="Submit" press="onCreate" ariaDescribedBy="rejectButtonDescription genericButtonDescription">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Button>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns >
+					<Column width="4em">
+						<header>
+							<Label text="Line"/>
+						</header>
+					</Column>
+					<Column width="4em">
+						<header>
+							<Text text="Qty"/>
+						</header>
+					</Column>
+					<Column width="5em">
+						<header>
+							<Text text="Year"/>
+						</header>
+					</Column>
+					<Column width="6em">
+						<header>
+							<Text text="Mint Mark"/>
+						</header>
+					</Column>
+					<Column width="5.5em">
+						<header>
+							<Text text="Denom."/>
+						</header>
+					</Column>
+					<Column width="5.5em">
+						<header>
+							<Text text="Pf"/>
+						</header>
+					</Column>
+					<Column width="5.5em">
+						<header>
+							<Text text="Variety"/>
+						</header>
+					</Column>
+					<Column width="5em">
+						<header>
+							<Text text="Pedig1"/>
+						</header>
+					</Column>
+					<Column width="5.5em">
+						<header>
+							<Text text="Pedig2"/>
+						</header>
+					</Column>
+					<Column width="5.5em">
+						<header>
+							<Text text="Str"/>
+						</header>
+					</Column>
+					<Column width="6em">
+						<header>
+							<Text text="Coin#"/>
+						</header>
+					</Column>
+					<Column width="6em">
+						<header>
+							<Text text="Value"/>
+						</header>
+					</Column>
+					<Column width="3em">
+						<header>
+							<Text text="VP"/>
+						</header>
+					</Column>
+					<Column width="3em">
+						<header>
+							<Text text="Me"/>
+						</header>
+					</Column>
+					<Column width="2.5em">
+						<header>
+							<Text text="Os"/>
+						</header>
+					</Column>
+					<Column width="3em">
+						<header>
+							<Text text="Rel"/>
+						</header>
+					</Column>
+					<Column width="3em">
+						<header>
+							<Text text="Lbl"/>
+						</header>
+					</Column>
+					<Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+						<header>
+							<Text text="Label"/>
+						</header>
+					</Column>
+					<Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+						<header>
+							<Text text="Core"/>
+						</header>
+					</Column>
+					<Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+						<header>
+							<Text text="Tag #"/>
+						</header>
+					</Column>
+					<Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+						<header>
+							<Text text="Holder Type"/>
+						</header>
+					</Column>
+					<Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+						<header>
+							<Text text="Orig Grade"/>
+						</header>
+					</Column>
+					<Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+						<header>
+							<Text text="Orig Strike"/>
+						</header>
+					</Column>
+					<Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+						<header>
+							<Text text="Cert No."/>
+						</header>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<Text text="{SOHeaderModel>NG_SERIALNUMBER}"/>
+							<Input value="{SOHeaderModel>QTY}"/>
+							<Input value="{SOHeaderModel>NG_YEAR}" change="getCoinInfo"/>
+							<Input value="{SOHeaderModel>NG_MINTMARK}"  change="getCoinInfo"/>
+							<Input value="{SOHeaderModel>NG_ZDENOM}"  change="getCoinInfo"/>
+							<Input value="{SOHeaderModel>NG_PROOFMINT}" placeholder="mintmark" showSuggestion="true" suggest=".onSuggest"
+								suggestionItems="{SOHeaderModel>/aItems/0/HEADERITEMS/mintmark}" change="getCoinInfo">
+								<suggestionItems>
+									<core:ListItem key="{SOHeaderModel>CharDesc}" text="{SOHeaderModel>CharVal}"/>
+								</suggestionItems>
+							</Input>
+							<!--<Select width="5em" forceSelection="false" selectedKey="{SOHeaderModel>NG_MINTMARK}"-->
+							<!--	items="{path:'SOHeaderModel>/aItems/0/HEADERITEMS/mintmark',templateShareable:false, sorter: { path: 'CharVal' }}">-->
+							<!--	<core:ListItem key="{SOHeaderModel>CharDesc}" text="{SOHeaderModel>CharVal}"/>-->
+							<!--</Select>-->
+							<Input value="{SOHeaderModel>NG_VARIETY}"/>
+							<Input value="{SOHeaderModel>NG_PEDIGREE}"/>
+							<Input value="{SOHeaderModel>NG_PEDIGREE1}"/>
+							<Input value="{SOHeaderModel>NG_PEDIGREE1}"/>
+							<Input Value="{SOHeaderModel>NG_COINNUMBER}"/>
+							<Input value="{SOHeaderModel>NG_COINVALUERECEIVED}"/>
+							<CheckBox selected="{ path: 'SOHeaderModel>NG_VP', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>
+							<CheckBox selected="{ path: 'SOHeaderModel>NG_ME', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>
+							<CheckBox selected="{ path: 'SOHeaderModel>NG_ZOS', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>
+							<CheckBox selected="{ path: 'SOHeaderModel>NG_REL', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>
+							<CheckBox selected="{ path: 'SOHeaderModel>NG_LBL', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>
+							<!--<Select width="5em" forceSelection="false" selectedKey="{SOHeaderModel>NG_CCGLABEL}"-->
+							<!--	items="{path:'SOHeaderModel>/aItems/0/HEADERITEMS/label',templateShareable:false, sorter: { path: 'ZngcReceivingLabelsCode' }}">-->
+							<!--	<core:ListItem key="{SOHeaderModel>ZngcReceivingLabelsCode}" text="{SOHeaderModel>ZngcReceivingLabelsCode}"/>-->
+							<!--</Select>-->
+							<!--<Select width="5em" forceSelection="false" selectedKey="{SOHeaderModel>NG_CORE}"-->
+							<!--	items="{path:'SOHeaderModel>/aItems/0/HEADERITEMS/core',templateShareable:false, sorter: { path: 'ZngcReceivingCoresCode' }}">-->
+							<!--	<core:ListItem key="{SOHeaderModel>ZngcReceivingCoresCode}" text="{SOHeaderModel>ZngcReceivingCoresCode}"/>-->
+							<!--</Select>-->
+							<Input textFormatMode="ValueKey" placeholder="Enter Label ..." showSuggestion="true" showTableSuggestionValueHelp="false"
+								suggestionRows="{SOHeaderModel>/aItems/0/HEADERITEMS/label}">
+								<suggestionColumns>
+									<Column popinDisplay="Inline" demandPopin="true">
+										<Label text="Name"/>
+									</Column>
+									<Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+										<Label text="Product ID"/>
+									</Column>
+								</suggestionColumns>
+								<suggestionRows>
+									<ColumnListItem>
+										<Label text="{SOHeaderModel>ZngcReceivingLabelsCode}"/>
+										<Label text="{SOHeaderModel>ZngcReceivingLabelsDesc}"/>
+									</ColumnListItem>
+								</suggestionRows>
+							</Input>
+							<Input id="coreInput" placeholder="Core" showSuggestion="true" suggest=".onSuggestCore"
+								suggestionItems="{SOHeaderModel>/aItems/0/HEADERITEMS/core}">
+								<suggestionItems>
+									<core:Item text="{SOHeaderModel>ZngcReceivingCoresCode}"/>
+								</suggestionItems>
+							</Input>
+							<Input value="{SOHeaderModel>TAG}"/>
+							<Input value="{SOHeaderModel>NG_HOLDERTYPE}"/>
+							<Input value="{SOHeaderModel>NG_ORIGGRADE}"/>
+							<Input value="{SOHeaderModel>NG_OLD_STRIKE}"/>
+							<Input value="{SOHeaderModel>CERT_ID}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<!--</Panel>-->
+		</semantic:content>
+		<semantic:titleMainAction>
+			<semantic:TitleMainAction id="editAction" text="Pedigree" press="onPedigree"/>
+		</semantic:titleMainAction>
+	</semantic:SemanticPage>
+</mvc:View>

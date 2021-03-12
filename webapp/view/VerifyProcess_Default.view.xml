@@ -1,0 +1,681 @@
+<mvc:View id="view1" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap" xmlns:t="sap.ui.table" xmlns:m="sap.m" xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout" xmlns:forms="sap.ui.layout.form" height="100%"
+	controllerName="ccg.Verification.controller.VerifyProcess_Default">
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:HBox>
+						<m:Avatar src="./image/NGC-Logo.png" width="71px" class="sapUiSmallMarginEnd" displaySize="S" displayShape="Square"/>
+						<m:VBox>
+							<m:Title text="Verification"/>
+						</m:VBox>
+					</m:HBox>
+				</expandedHeading>
+				<snappedHeading>
+					<m:HBox>
+						<m:Avatar src="./image/NGC-Logo.png" class="sapUiMediumMarginEnd" displaySize="S" displayShape="Square"/>
+						<m:VBox>
+							<m:Title text="Verification"/>
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
+				<expandedContent>
+					<!--<Text text="{/titleExpandedContent/text}"/>-->
+					<!--<forms:SimpleForm editable="true" layout="ColumnLayout" width="55%">-->
+					<m:Panel headerText="">
+						<layout:HorizontalLayout class="sapUiContentPadding" hAlign="Center">
+							<m:Label text="Submission # "/>
+							<m:Input class="sapUiSmallMarginBottom" id="txtCustRefNumber" change="onChange" placeholder="Submission Number" type="Number"/>
+						</layout:HorizontalLayout>
+						<layout:HorizontalLayout class="sapUiContentPadding">
+							<m:ObjectNumber class="sapMObjectNumberLarge" number="{SOHeaderModel>VBELN}"/>
+						</layout:HorizontalLayout>
+						<layout:HorizontalLayout class="sapUiContentPadding">
+							<m:Label text="Status:"/>
+							<m:ObjectStatus class="sapUiSmallMarginBottom" text="Staus" icon="sap-icon://message-warning" state="Warning"/>
+						</layout:HorizontalLayout>
+						<!--</forms:SimpleForm>-->
+					</m:Panel>
+				</expandedContent>
+				<snappedTitleOnMobile>
+					<m:Title text=""/>
+				</snappedTitleOnMobile>
+				<actions>
+			
+					<m:Button text="Pedigree" type="Emphasized"/>
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+				<m:Avatar src="sap-icon://customer-briefing" backgroundColor="Random" displaySize="M" class="sapUiTinyMarginEnd"/>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Title text="Sold To:" wrapping="true" titleStyle="color: indigo;"/>
+					<m:ObjectStatus text="{SOHeaderModel>NAME_SO},{SOHeaderModel>STREET_SO}"/>
+					<m:ObjectStatus text="{SOHeaderModel>CITY_SO},{SOHeaderModel>COUNTRY_SO}-{SOHeaderModel>POSTALCODE_SO}"/>
+				</layout:VerticalLayout>
+				<m:Avatar src="sap-icon://shipping-status" backgroundColor="Random" displaySize="M" class="sapUiTinyMarginEnd"/>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<m:Title text="Ship To:" wrapping="true"/>
+					<m:ObjectStatus text="{SOHeaderModel>NAME_SH},{SOHeaderModel>STREET_SO}"/>
+					<m:ObjectStatus text="{SOHeaderModel>CITY_SH},{SOHeaderModel>COUNTRY_SH}-{SOHeaderModel>POSTALCODE_SH}"/>
+				</layout:VerticalLayout>
+			</m:FlexBox>
+			<m:Panel headerText="">
+				<layout:HorizontalLayout class="sapUiContentPadding">
+					<m:Label text="Coin Record :"/>
+					<m:ObjectNumber class="sapMObjectNumberLarge" number="{SOHeaderModel>LINE_ITEM}"/>
+				</layout:HorizontalLayout>
+				<layout:HorizontalLayout class="sapUiContentPadding">
+					<m:Label text="Coins Verified :"/>
+					<m:ObjectNumber id="coinVerified" class="sapMObjectNumberLarge" number="{SOHeaderModel>COIN_VERIFIED}"/>
+				</layout:HorizontalLayout>
+				<layout:HorizontalLayout class="sapUiContentPadding">
+					<m:Label text="Value Record :"/>
+					<m:ObjectNumber class="sapMObjectNumberLarge" number="{SOHeaderModel>ZINSURACE_LIMIT}"/>
+				</layout:HorizontalLayout>
+				<layout:HorizontalLayout class="sapUiContentPadding">
+					<m:Label text="Verified :"/>
+					<!--<m:ObjectNumber class="sapMObjectNumberLarge" number="{SOHeaderModel>VERIFIED}"/>-->
+					<m:ObjectNumber id="verified" class="sapMObjectNumberLarge"
+						number="{ parts:[{path:'SOHeaderModel>VERIFIED'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+						emphasized="false" state="None"/>
+				</layout:HorizontalLayout>
+			</m:Panel>
+		</headerContent>
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="">
+				<subSections>
+					<ObjectPageSubSection title="" showTitle="false">
+						<blocks>
+							<m:Table id="tblCoinItems" contextualWidth="590px" popinLayout="GridSmall" items="{SOHeaderModel>/aItems/0/HEADERITEMS/results}"
+								fixedLayout="true" inset="true" alternateRowColors="true" mode="MultiSelect" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+								<m:headerToolbar>
+									<m:OverflowToolbar id="otbSubheader">
+										<m:Title text="Coin Items" level="H2"/>
+										<m:ToolbarSpacer id="ts1"/>
+											<m:Button id="clearButton" text="Clear Row" press="onClearPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+											<m:layoutData>
+												<m:FlexItemData growFactor="2"/>
+											</m:layoutData>
+										</m:Button>
+										<m:Button id="copyButton" text="Copy Row" press="onCopyPress" ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+											<m:layoutData>
+												<m:FlexItemData growFactor="2"/>
+											</m:layoutData>
+										</m:Button>
+										<m:Button id="LabelPrintButton" type="Emphasized" text="Label Print" press="onPress"/>
+										<m:Button id="SaveButton" text="Save" press="onCreate" ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+											<m:layoutData>
+												<m:FlexItemData growFactor="1"/>
+											</m:layoutData>
+										</m:Button>
+										<m:Button id="submitButton" type="Accept" text="Submit" press="onCreate" ariaDescribedBy="rejectButtonDescription genericButtonDescription">
+											<m:layoutData>
+												<m:FlexItemData growFactor="1"/>
+											</m:layoutData>
+										</m:Button>
+									</m:OverflowToolbar>
+								</m:headerToolbar>
+								<m:columns >
+									<!--<m:Column width="6em">-->
+									<!--	<m:header>-->
+									<!--		<m:Label text="Copy"/>-->
+									<!--	</m:header>-->
+									<!--</m:Column>-->
+									<m:Column width="4em">
+										<m:header>
+											<m:Label text="Line"/>
+										</m:header>
+									</m:Column>
+									<!--<m:Column width="4em">-->
+									<!--	<m:header>-->
+									<!--		<m:Text text="Qty"/>-->
+									<!--	</m:header>-->
+									<!--</m:Column>-->
+									<m:Column width="6em">
+										<m:header>
+											<m:Text text="Year"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="6em">
+										<m:header>
+											<m:Text text="Mint"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="5.5em">
+										<m:header>
+											<m:Text text="Denom."/>
+										</m:header>
+									</m:Column>
+									<m:Column width="30em">
+										<m:header>
+											<m:Text text="Pf"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="5.5em">
+										<m:header>
+											<m:Text text="Variety"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="5em">
+										<m:header>
+											<m:Text text="Pedig1"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="5.5em">
+										<m:header>
+											<m:Text text="Pedig2"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="5.5em">
+										<m:header>
+											<m:Text text="Str"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="26em">
+										<m:header>
+											<m:Text text="Coin#"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="3em">
+										<m:header>
+											<m:Text text=""/>
+										</m:header>
+									</m:Column>
+									<m:Column width="16em">
+										<m:header>
+											<m:Text text="Value"/>
+										</m:header>
+									</m:Column>
+									<m:Column hAlign="Center">
+										<m:header>
+											<m:Text text="VP"/>
+										</m:header>
+									</m:Column>
+									<m:Column hAlign="Center">
+										<m:header>
+											<m:Text text="Me"/>
+										</m:header>
+									</m:Column>
+									<m:Column hAlign="Center">
+										<m:header>
+											<m:Text text="Os"/>
+										</m:header>
+									</m:Column>
+									<m:Column hAlign="Center">
+										<m:header>
+											<m:Text text="Rel"/>
+										</m:header>
+									</m:Column>
+									<m:Column hAlign="Center">
+										<m:header>
+											<m:Text text="Lbl"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="4rem" demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+										<m:header>
+											<m:Text text="Label"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="4rem" demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+										<m:header>
+											<m:Text text="Core"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="4rem" demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+										<m:header>
+											<m:Text text="Tag #"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="4rem" demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+										<m:header>
+											<m:Text text="Holder Type"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="4rem" demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+										<m:header>
+											<m:Text text="Orig Grade"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="4rem" demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+										<m:header>
+											<m:Text text="Orig Strike"/>
+										</m:header>
+									</m:Column>
+									<m:Column width="4rem" demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">
+										<m:header>
+											<m:Text text="Cert No."/>
+										</m:header>
+									</m:Column>
+								</m:columns>
+								<m:items>
+									<m:ColumnListItem >
+										<m:cells>
+											<!--<m:VBox class="sapUiSmallMargin">-->
+											<!--	<m:RadioButton groupName="GroupA" selected="false"/>-->
+											<!--</m:VBox>-->
+											<m:Text text="{SOHeaderModel>NG_SERIALNUMBER}"/>
+											<!--<m:Input id="4444" value="{SOHeaderModel>QTY}" maxLength="4"/>-->
+											<m:Input value="{SOHeaderModel>NG_YEAR}" type="number" maxLength="4" submit="getCoinInfo"/>
+											<m:Input value="{SOHeaderModel>NG_MINTMARK}" maxLength="4" submit="getCoinInfo" change="toUpperCase"/>
+											<m:Input value="{SOHeaderModel>NG_ZDENOM}" maxLength="4" submit="getCoinInfo" change="toUpperCase"/>
+											<m:Input value="{SOHeaderModel>NG_PROOFMINT}" submit="getCoinInfo" textFormatMode="ValueKey" showSuggestion="true"
+												showTableSuggestionValueHelp="false" suggestionRows="{SOHeaderModel>/aItems/0/HEADERITEMS/mintmark}">
+												<m:suggestionColumns>
+													<m:Column popinDisplay="Inline" demandPopin="true">
+														<m:Label text="Value"/>
+													</m:Column>
+													<m:Column popinDisplay="Inline" demandPopin="true">
+														<m:Label text="Desc"/>
+													</m:Column>
+												</m:suggestionColumns>
+												<m:suggestionRows>
+													<m:ColumnListItem>
+														<m:Label text="{SOHeaderModel>CharVal}"/>
+														<m:Label text="{SOHeaderModel>CharDesc}"/>
+													</m:ColumnListItem>
+												</m:suggestionRows>
+											</m:Input>
+											<m:Input value="{SOHeaderModel>NG_VARIETY}"/>
+											<m:Input value="{SOHeaderModel>NG_PEDIGREE}"/>
+											<m:Input value="{SOHeaderModel>NG_PEDIGREE1}"/>
+											<m:Input value="{SOHeaderModel>NG_PEDIGREE1}"/>
+											<m:Input value="{SOHeaderModel>NG_COINNUMBER}" submit="getCoinInfo"/>
+											<core:Icon src="sap-icon://search" class="size5" color="#8875E7" press="lookupBtnPress">
+												<core:layoutData>
+													<m:FlexItemData growFactor="1"/>
+												</core:layoutData>
+											</core:Icon>
+											<m:Input value="{SOHeaderModel>NG_COINVALUERECEIVED}" change="onValueChange"/>
+											<m:CheckBox selected="{ path: 'SOHeaderModel>NG_VP', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>
+											<m:CheckBox selected="{ path: 'SOHeaderModel>NG_ME', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>
+											<m:CheckBox selected="{ path: 'SOHeaderModel>NG_ZOS', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>
+											<m:CheckBox selected="{ path: 'SOHeaderModel>NG_REL', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>
+											<m:CheckBox selected="{ path: 'SOHeaderModel>NG_LBL', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>
+											<m:Input value="{SOHeaderModel>NG_CCGLABEL}" textFormatMode="ValueKey" placeholder="" showSuggestion="true"
+												showTableSuggestionValueHelp="false" suggestionRows="{SOHeaderModel>/aItems/0/HEADERITEMS/label}">
+												<m:suggestionColumns>
+													<m:Column popinDisplay="Inline" demandPopin="true">
+														<m:Label text="Code"/>
+													</m:Column>
+													<m:Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+														<m:Label text="Desc"/>
+													</m:Column>
+												</m:suggestionColumns>
+												<m:suggestionRows>
+													<m:ColumnListItem>
+														<m:Label text="{SOHeaderModel>ZngcReceivingLabelsCode}"/>
+														<m:Label text="{SOHeaderModel>ZngcReceivingLabelsDesc}"/>
+													</m:ColumnListItem>
+												</m:suggestionRows>
+											</m:Input>
+											<m:Input value="{SOHeaderModel>NG_CORE}" textFormatMode="ValueKey" placeholder="" showSuggestion="true" showTableSuggestionValueHelp="false"
+												suggestionRows="{SOHeaderModel>/aItems/0/HEADERITEMS/core}">
+												<m:suggestionColumns>
+													<m:Column popinDisplay="Inline" demandPopin="true">
+														<m:Label text="Code"/>
+													</m:Column>
+													<m:Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">
+														<m:Label text="Desc"/>
+													</m:Column>
+												</m:suggestionColumns>
+												<m:suggestionRows>
+													<m:ColumnListItem>
+														<m:Label text="{SOHeaderModel>ZngcReceivingCoresCode}"/>
+														<m:Label text="{SOHeaderModel>ZngcReceivingCoresDesc}"/>
+													</m:ColumnListItem>
+												</m:suggestionRows>
+											</m:Input>
+											<m:Input value="{SOHeaderModel>TAG}"/>
+											<m:Input value="{SOHeaderModel>NG_HOLDERTYPE}"/>
+											<m:Input value="{SOHeaderModel>NG_ORIGGRADE}"/>
+											<m:Input value="{SOHeaderModel>NG_OLD_STRIKE}"/>
+											<m:Input value="{SOHeaderModel>CERT_ID}"/>
+										</m:cells>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>
+<!--<m:Table id="tblCoinItems" contextualWidth="520px" popinLayout="GridSmall" items="{SOHeaderModel>/aItems/0/HEADERITEMS/results}"-->
+<!--fixedLayout="true" inset="true" alternateRowColors="true" multiSelect="true">-->
+<!--<m:TableSelectDialog id="tblCoinItems" noDataText="No Products Found" title="Select Product" search=".handleSearch" confirm=".handleClose"-->
+<!--	cancel=".handleClose" multiSelect="true"-->
+<!--	items="{ path : 'SOHeaderModel>/aItems/0/HEADERITEMS/results', sorter : { path : 'Name', descending : false } }">-->
+<!--<m:Table headerText="tblCoinItems" contextualWidth="520px" mode="MultiSelect" items="{ path:'SOHeaderModel>/aItems/0/HEADERITEMS/results', sorter: { path: 'SupplierName', descending: false } }">-->
+<!--	<m:ColumnListItem >-->
+<!--		<m:cells>-->
+<!--			<m:Text text="{SOHeaderModel>NG_SERIALNUMBER}"/>-->
+<!--			<m:Input value="{SOHeaderModel>QTY}"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_YEAR}" change="getCoinInfo"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_MINTMARK}" change="getCoinInfo"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_ZDENOM}" change="getCoinInfo"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_PROOFMINT}" placeholder="mintmark" showSuggestion="true" suggest=".onSuggest"-->
+<!--				suggestionItems="{SOHeaderModel>/aItems/0/HEADERITEMS/mintmark}" change="getCoinInfo">-->
+<!--				<m:suggestionItems>-->
+<!--					<core:ListItem key="{SOHeaderModel>CharDesc}" text="{SOHeaderModel>CharVal}"/>-->
+<!--				</m:suggestionItems>-->
+<!--			</m:Input>-->
+<!--<m:Select width="5em" forceSelection="false" selectedKey="{SOHeaderModel>NG_MINTMARK}"-->
+<!--	items="{path:'SOHeaderModel>/aItems/0/HEADERITEMS/mintmark',templateShareable:false, sorter: { path: 'CharVal' }}">-->
+<!--	<m:core:ListItem key="{SOHeaderModel>CharDesc}" text="{SOHeaderModel>CharVal}"/>-->
+<!--<m:/Select>-->
+<!--			<m:Input value="{SOHeaderModel>NG_VARIETY}"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_PEDIGREE}"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_PEDIGREE1}"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_PEDIGREE1}"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_COINNUMBER}"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_COINVALUERECEIVED}"/>-->
+<!--			<m:CheckBox selected="{ path: 'SOHeaderModel>NG_VP', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>-->
+<!--			<m:CheckBox selected="{ path: 'SOHeaderModel>NG_ME', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>-->
+<!--			<m:CheckBox selected="{ path: 'SOHeaderModel>NG_ZOS', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>-->
+<!--			<m:CheckBox selected="{ path: 'SOHeaderModel>NG_REL', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>-->
+<!--			<m:CheckBox selected="{ path: 'SOHeaderModel>NG_LBL', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>-->
+<!--<m:Select width="5em" forceSelection="false" selectedKey="{SOHeaderModel>NG_CCGLABEL}"-->
+<!--	items="{path:'SOHeaderModel>/aItems/0/HEADERITEMS/label',templateShareable:false, sorter: { path: 'ZngcReceivingLabelsCode' }}">-->
+<!--	<m:core:ListItem key="{SOHeaderModel>ZngcReceivingLabelsCode}" text="{SOHeaderModel>ZngcReceivingLabelsCode}"/>-->
+<!--<m:/Select>-->
+<!--<m:Select width="5em" forceSelection="false" selectedKey="{SOHeaderModel>NG_CORE}"-->
+<!--	items="{path:'SOHeaderModel>/aItems/0/HEADERITEMS/core',templateShareable:false, sorter: { path: 'ZngcReceivingCoresCode' }}">-->
+<!--	<m:core:ListItem key="{SOHeaderModel>ZngcReceivingCoresCode}" text="{SOHeaderModel>ZngcReceivingCoresCode}"/>-->
+<!--<m:/Select>-->
+<!--			<m:Input textFormatMode="ValueKey" placeholder="Enter Label ..." showSuggestion="true" showTableSuggestionValueHelp="false"-->
+<!--				suggestionRows="{SOHeaderModel>/aItems/0/HEADERITEMS/label}">-->
+<!--				<m:suggestionColumns>-->
+<!--					<m:Column popinDisplay="Inline" demandPopin="true">-->
+<!--						<m:Label text="Name"/>-->
+<!--					</m:Column>-->
+<!--					<m:Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">-->
+<!--						<m:Label text="Product ID"/>-->
+<!--					</m:Column>-->
+<!--				</m:suggestionColumns>-->
+<!--				<m:suggestionRows>-->
+<!--					<m:ColumnListItem>-->
+<!--						<m:Label text="{SOHeaderModel>ZngcReceivingLabelsCode}"/>-->
+<!--						<m:Label text="{SOHeaderModel>ZngcReceivingLabelsDesc}"/>-->
+<!--					</m:ColumnListItem>-->
+<!--				</m:suggestionRows>-->
+<!--			</m:Input>-->
+<!--			<m:Input placeholder="Core" showSuggestion="true" suggest=".onSuggestCore" suggestionItems="{SOHeaderModel>/aItems/0/HEADERITEMS/core}">-->
+<!--				<m:suggestionItems>-->
+<!--					<core:Item text="{SOHeaderModel>ZngcReceivingCoresCode}"/>-->
+<!--				</m:suggestionItems>-->
+<!--			</m:Input>-->
+<!--			<m:Input value="{SOHeaderModel>TAG}"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_HOLDERTYPE}"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_ORIGGRADE}"/>-->
+<!--			<m:Input value="{SOHeaderModel>NG_OLD_STRIKE}"/>-->
+<!--			<m:Input value="{SOHeaderModel>CERT_ID}"/>-->
+<!--		</m:cells>-->
+<!--	</m:ColumnListItem>-->
+<!--	<m:columns >-->
+<!--		<m:Column width="4em">-->
+<!--			<m:header>-->
+<!--				<m:Label text="Line"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="4em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Qty"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="5em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Year"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="6em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Mint Mark"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="5.5em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Denom."/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="5.5em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Pf"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="5.5em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Variety"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="5em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Pedig1"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="5.5em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Pedig2"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="5.5em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Str"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="6em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Coin#"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="6em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Value"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="3em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="VP"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="3em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Me"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="2.5em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Os"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="3em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Rel"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column width="3em">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Lbl"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Label"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Core"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Tag #"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Holder Type"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Orig Grade"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Orig Strike"/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--		<m:Column demandPopin="true" hAlign="Right" minScreenWidth="Tablet" popinDisplay="Block">-->
+<!--			<m:header>-->
+<!--				<m:Text text="Cert No."/>-->
+<!--			</m:header>-->
+<!--		</m:Column>-->
+<!--	</m:columns>-->
+<!--</m:Table>-->
+<!--***********************************************************************************-->
+<!--////////////////////////////////////////////////////////////-->
+<!--/////////////////////////////////////////////////////////-->
+<!--////////////////////////////////////////////////////////-->
+<!--<t:Table id="table" contextualWidth="520px" popinLayout="GridSmall" rows="{SOHeaderModel>/aItems/0/HEADERITEMS/results}"-->
+<!--	selectionMode="MultiToggle" visibleRowCount="7" ariaLabelledBy="title">-->
+<!--	<t:extension>-->
+<!--<m:OverflowToolbar>-->
+<!--	<m:Title id="title" text="Products"/>-->
+<!--	<m:ToolbarSpacer/>-->
+<!--</m:OverflowToolbar>-->
+<!--		<m:OverflowToolbar id="otbSubheader">-->
+<!--			<m:Title text="Coin Items" level="H2"/>-->
+<!--			<m:ToolbarSpacer id="ts1"/>-->
+<!--			<m:Button id="LabelPrintButton" type="Emphasized" text="Label Print" press="onPress"/>-->
+<!--			<m:Button id="SaveButton" text="Save" press="onCreate" ariaDescribedBy="defaultButtonDescription genericButtonDescription">-->
+<!--				<m:layoutData>-->
+<!--					<m:FlexItemData growFactor="1"/>-->
+<!--				</m:layoutData>-->
+<!--			</m:Button>-->
+<!--			<m:Button id="submitButton" type="Accept" text="Submit" press="onCreate" ariaDescribedBy="rejectButtonDescription genericButtonDescription">-->
+<!--				<m:layoutData>-->
+<!--					<m:FlexItemData growFactor="1"/>-->
+<!--				</m:layoutData>-->
+<!--			</m:Button>-->
+<!--		</m:OverflowToolbar>-->
+<!--	</t:extension>-->
+<!--	<t:columns>-->
+<!--		<t:Column>-->
+<!--			<m:HBox>-->
+<!--				<m:Label width="2.5em" text="Line"/>-->
+<!--				<m:Label width="2.75em" text="Qty"/>-->
+<!--				<m:Label width="3em" text="Year"/>-->
+<!--				<m:Label width="3em" text="MintMark"/>-->
+<!--				<m:Label width="3em" text="Denom"/>-->
+<!--				<m:Label width="7.5em" text="ProofMint"/>-->
+<!--				<m:Label width="6em" text="Variety"/>-->
+<!--				<m:Label width="5.5em" text="Pedig1"/>-->
+<!--				<m:Label width="5.75em" text="Pedig2"/>-->
+<!--				<m:Label width="5.75em" text="Str"/>-->
+<!--				<m:Label width="5.75em" text="Coin#"/>-->
+<!--				<m:Label width="6.5em" text="Value"/>-->
+<!--				<m:Label width="3em" text="VP"/>-->
+<!--				<m:Label width="3em" text="Me"/>-->
+<!--				<m:Label width="3em" text="Os"/>-->
+<!--				<m:Label width="3em" text="Rel"/>-->
+<!--				<m:Label width="3em" text="Lbl"/>-->
+<!--			</m:HBox>-->
+<!--			<t:template>-->
+<!--				<m:VBox>-->
+<!--					<m:HBox>-->
+<!--						<m:Text width="2.5em" text="{SOHeaderModel>NG_SERIALNUMBER}"/>-->
+<!--						<m:Input width="2.5em" value="{SOHeaderModel>QTY}"/>-->
+<!--						<m:Input width="2.5em" value="{SOHeaderModel>NG_YEAR}" change="getCoinInfo"/>-->
+<!--						<m:Input width="2.5em" value="{SOHeaderModel>NG_MINTMARK}" change="getCoinInfo"/>-->
+<!--						<m:Input width="2.5em" value="{SOHeaderModel>NG_ZDENOM}" change="getCoinInfo"/>-->
+<!--						<m:Input width="7em" value="{SOHeaderModel>NG_PROOFMINT}" textFormatMode="ValueKey" placeholder="Enter Label ..." showSuggestion="true" showTableSuggestionValueHelp="false"-->
+<!--							suggestionRows="{SOHeaderModel>/aItems/0/HEADERITEMS/mintmark}"  change="getCoinInfo">-->
+<!--							<m:suggestionColumns>-->
+<!--								<m:Column popinDisplay="Inline" demandPopin="true">-->
+<!--									<m:Label text="Value"/>-->
+<!--								</m:Column>-->
+<!--								<m:Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">-->
+<!--									<m:Label text="Desc"/>-->
+<!--								</m:Column>-->
+<!--							</m:suggestionColumns>-->
+<!--							<m:suggestionRows>-->
+<!--								<m:ColumnListItem>-->
+<!--									<m:Label text="{SOHeaderModel>CharVal}"/>-->
+<!--									<m:Label text="{SOHeaderModel>CharDesc}"/>-->
+<!--								</m:ColumnListItem>-->
+<!--							</m:suggestionRows>-->
+<!--						</m:Input>-->
+<!--						<m:Input width="5em" text="{SOHeaderModel>NG_VARIETY}"/>-->
+<!--						<m:Input width="5em" value="{SOHeaderModel>NG_PEDIGREE}"/>-->
+<!--						<m:Input width="5em" value="{SOHeaderModel>NG_PEDIGREE1}"/>-->
+<!--						<m:Input width="5em" value="{SOHeaderModel>NG_PEDIGREE1}"/>-->
+<!--						<m:Input width="5em" value="{SOHeaderModel>NG_COINNUMBER}"/>-->
+<!--						<m:Input width="5em" value="{SOHeaderModel>NG_COINVALUERECEIVED}"/>-->
+<!--						<m:CheckBox selected="{ path: 'SOHeaderModel>NG_VP', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>-->
+<!--						<m:CheckBox selected="{ path: 'SOHeaderModel>NG_ME', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>-->
+<!--						<m:CheckBox selected="{ path: 'SOHeaderModel>NG_ZOS', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>-->
+<!--						<m:CheckBox selected="{ path: 'SOHeaderModel>NG_REL', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>-->
+<!--						<m:CheckBox selected="{ path: 'SOHeaderModel>NG_LBL', templavarietyteShareable:false, type: 'sap.ui.model.type.String'}"/>-->
+<!--					</m:HBox>-->
+<!--					<m:HBox>-->
+<!--						<m:VBox>-->
+<!--							<m:Label text="Label:"/>-->
+<!--							<m:Input value="{SOHeaderModel>NG_CCGLABEL}"  textFormatMode="ValueKey" placeholder="Enter Label ..." showSuggestion="true" showTableSuggestionValueHelp="false"-->
+<!--								suggestionRows="{SOHeaderModel>/aItems/0/HEADERITEMS/label}">-->
+<!--								<m:suggestionColumns>-->
+<!--									<m:Column popinDisplay="Inline" demandPopin="true">-->
+<!--										<m:Label text="Name"/>-->
+<!--									</m:Column>-->
+<!--									<m:Column hAlign="Center" popinDisplay="Inline" demandPopin="true" minScreenWidth="Tablet">-->
+<!--										<m:Label text="Product ID"/>-->
+<!--									</m:Column>-->
+<!--								</m:suggestionColumns>-->
+<!--								<m:suggestionRows>-->
+<!--									<m:ColumnListItem>-->
+<!--										<m:Label text="{SOHeaderModel>ZngcReceivingLabelsCode}"/>-->
+<!--										<m:Label text="{SOHeaderModel>ZngcReceivingLabelsDesc}"/>-->
+<!--									</m:ColumnListItem>-->
+<!--								</m:suggestionRows>-->
+<!--							</m:Input>-->
+<!--						</m:VBox>-->
+<!--						<m:VBox>-->
+<!--							<m:Label text="Core:"/>-->
+<!--							<m:Input width="5em"  value="{SOHeaderModel>NG_CORE}" placeholder="Core" showSuggestion="true" suggest=".onSuggestCore"-->
+<!--								suggestionItems="{SOHeaderModel>/aItems/0/HEADERITEMS/core}">-->
+<!--								<m:suggestionItems>-->
+<!--									<core:Item text="{SOHeaderModel>ZngcReceivingCoresCode}"/>-->
+<!--								</m:suggestionItems>-->
+<!--							</m:Input>-->
+<!--						</m:VBox>-->
+<!--						<m:VBox>-->
+<!--							<m:Label text="Tag:"/>-->
+<!--							<m:Input value="{SOHeaderModel>TAG}"/>-->
+<!--						</m:VBox>-->
+<!--						<m:VBox>-->
+<!--							<m:Label text="HolderType"/>-->
+<!--							<m:Input value="{SOHeaderModel>NG_HOLDERTYPE}"/>-->
+<!--						</m:VBox>-->
+<!--						<m:VBox>-->
+<!--							<m:Label text="Orig.Grade:"/>-->
+<!--							<m:Input value="{SOHeaderModel>NG_ORIGGRADE}"/>-->
+<!--						</m:VBox>-->
+<!--						<m:VBox>-->
+<!--							<m:Label text="Core:"/>-->
+<!--							<m:Input value="{SOHeaderModel>NG_OLD_STRIKE}"/>-->
+<!--						</m:VBox>-->
+<!--						<m:VBox>-->
+<!--							<m:Label text="Cert No.:"/>-->
+<!--							<m:Input value="{SOHeaderModel>CERT_ID}"/>-->
+<!--						</m:VBox>-->
+<!--					</m:HBox>-->
+<!--				</m:VBox>-->
+<!--			</t:template>-->
+<!--		</t:Column>-->
+<!--	</t:columns>-->
+<!--</t:Table>-->
